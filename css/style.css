@@ -1,0 +1,22 @@
+.board {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.cell {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+/* .inner-cell {
+  visibility: hidden;
+} */
+
+.marked {
+    background-color: rgba(255, 0, 0, 0.363);
+}
+
+
+
