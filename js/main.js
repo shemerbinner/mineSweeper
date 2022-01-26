@@ -5,28 +5,29 @@ const FLOOR = '⬜'
 const FLAG = '🚩'
 
 var gBoard;
-var gLevel = {
-    size: 4,
-    mines: 2
-};
+var gLevel;
 var gIsVictory = true;
 var gMinesLoc = [];
 
-
+// לא לשכוח להוסיף טיימר!
+// להוסיף כפתור ריסטרט (החלטתי פשוט לא לעשות את זה עדיין)
 
 function initGame() {
-    gBoard = buildBoard();
+    gBoard = buildBoard(4, 2);
     printMat(gBoard, '.board-container');
-
 }
 
-function buildBoard() {
-    var SIZE = gLevel.size;
-    var board = [];
 
-    for (var i = 0; i < SIZE; i++) {
+function buildBoard(size = 4, mines = 2) {
+    var board = [];
+    gLevel = {
+        size: size,
+        mines: mines
+    }
+    // console.log(gLevel)
+    for (var i = 0; i < size; i++) {
         board.push([]);
-        for (var j = 0; j < SIZE; j++) {
+        for (var j = 0; j < size; j++) {
             board[i][j] = {
                 location: { i: i, j: j },
                 minesAroundCount: 0,
@@ -38,12 +39,62 @@ function buildBoard() {
     }
     console.table(board)
 
-    addRandomMines(board)
+    addRandomMines(board, mines)
     setMinesNegsCount(board);
+    printMat(board, '.board-container');
 
     return board;
 }
 
+
+// function expandShown(board, elCell, i, j) {
+
+//     for (var i = i - 1; i <= i + 1; i++) {
+//         if (i < 0 || i > board.length - 1) continue
+//         for (var j = j - 1; j <= j + 1; j++) {
+//             if (j < 0 || j > board[0].length - 1) continue
+//             if (i === i && j === j) continue
+//             var cell = board[i][j];
+//             // console.log('cell', cell)
+
+//             if (!cell.isMine) {
+//                 cell.isShown = true;
+//                 if (board[i][j].minesAroundCount !== 0) elCell.innerText = board[i][j].minesAroundCount;
+//                 else elCell.innerText = '';
+//             }
+//         }
+//     }
+
+// }
+
+
+function cellClicked(elCell) {
+    console.log(elCell)
+
+    if (!gIsVictory) return
+
+    var i = elCell.dataset.i;
+    var j = elCell.dataset.j;
+
+    if (gBoard[i][j].isMarked) return
+
+    gBoard[i][j].isShown = true;
+    // console.log(gBoard[i][j])
+
+    var innerCell = elCell.querySelector('.inner-cell')
+
+    if (gBoard[i][j].isMine) {
+        innerCell.innerText = MINE
+        gIsVictory = false;
+        gameOver(gIsVictory)
+    }
+    else innerCell.innerText = gBoard[i][j].minesAroundCount
+
+    // else if (innerCell.innerText === '') expandShown(gBoard, elCell, i, j)
+
+    checkGameOver(elCell)
+
+}
 
 function checkGameOver() {
     var count = 0;
@@ -81,7 +132,7 @@ function gameOver(isVictory) {
             gMinesLoc[i].isShown = true;
 
             var elCell = document.querySelector([`[data-i="${locI}"][data-j="${locJ}"]`])
-            elCell.style.visibility = 'visible';
+            elCell.innerText = MINE;
         }
 
     }
@@ -90,7 +141,7 @@ function gameOver(isVictory) {
 
 function cellMarked(elCell) {
     // console.log(elCell)
-
+    if (!gIsVictory) return
     var i = elCell.dataset.i;
     var j = elCell.dataset.j;
     var flaggedCell = elCell.querySelector('.inner-cell')
@@ -110,33 +161,6 @@ function cellMarked(elCell) {
 }
 
 
-function cellClicked(elCell) {
-    console.log(elCell)
-
-    if (!gIsVictory) return
-
-    var i = elCell.dataset.i;
-    var j = elCell.dataset.j;
-
-    if (gBoard[i][j].isMarked) return
-
-    gBoard[i][j].isShown = true;
-    // console.log(gBoard[i][j])
-
-    var innerCell = elCell.querySelector('.inner-cell')
-
-    if (gBoard[i][j].isMine) {
-        innerCell.innerText = MINE
-        gIsVictory = false;
-        gameOver(gIsVictory)
-    }
-    else innerCell.innerText = gBoard[i][j].minesAroundCount
-
-    checkGameOver(elCell)
-
-}
-
-
 function setMinesNegsCount(board) {
 
     for (var i = 0; i < board.length; i++) {
@@ -145,12 +169,10 @@ function setMinesNegsCount(board) {
             board[i][j].minesAroundCount = minesCount;
         }
     }
-
-
 }
 
-function addRandomMines(board) {
-    var minesNum = gLevel.mines
+function addRandomMines(board, mines) {
+    var minesNum = mines
 
     for (var i = 0; i < minesNum; i++) {
         var randI = getRandomIntIn(0, board.length - 1);

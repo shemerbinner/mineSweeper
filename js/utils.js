@@ -43,8 +43,6 @@ function getRandomIntIn(min, max) {
 
 
 function countMinesAround(mat, rowIdx, colIdx) {
-    // console.log('rowIdx', rowIdx)
-    // console.log('colIdx', colIdx)
     var count = 0
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         if (i < 0 || i > mat.length - 1) continue
@@ -56,7 +54,8 @@ function countMinesAround(mat, rowIdx, colIdx) {
             if (cell.isMine === true) count++
         }
     }
-    // console.log('count', count)
+    if (count === 0) return ''
+    
     return count
 }
 
