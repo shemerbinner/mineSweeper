@@ -10,9 +10,7 @@ function createMat(ROWS, COLS) {
     return mat
 }
 
-
-
-function printMat(mat, selector) {
+function printMat(mat) {
     var strHTML = '<table class="board"><tbody>';
     for (var i = 0; i < mat.length; i++) {
         strHTML += '<tr>';
@@ -23,15 +21,17 @@ function printMat(mat, selector) {
         strHTML += '</tr>'
     }
     strHTML += '</tbody></table>';
-    var elContainer = document.querySelector(selector);
+    var elContainer = document.querySelector('.board-container');
     elContainer.innerHTML = strHTML;
+    // addRandomMines(mat, gLevel.mines)
+    // setMinesNegsCount(mat);
 }
 
 
 // location such as: {i: 2, j: 7}
-function renderCell(location, value) {
+function renderCell(i, j, value) {
     // Select the elCell and set the value
-    var elCell = document.querySelector(`.cell-${location.i}-${location.j}`);
+    var elCell = document.querySelector([`data-i=${i} data-j=${j}`]);
     elCell.innerHTML = value;
 }
 
@@ -59,16 +59,3 @@ function countMinesAround(mat, rowIdx, colIdx) {
     return count
 }
 
-
-
-//   function findEmptyCells(board) {
-//     var emptyCells = [];
-//     for (var i = 1; i <= board.length - 2; i++) {
-//       var currRow = board[i];
-//       for (var j = 1; j <= currRow.length - 2; j++) {
-//         var currCell = currRow[j];
-//         if (currCell === FOOD || currCell === EMPTY) emptyCells.push({ i: i, j: j });
-//       }
-//     }
-//     return emptyCells
-//   }
