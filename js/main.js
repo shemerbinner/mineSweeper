@@ -87,6 +87,7 @@ function cellClicked(elCell) {
     if (gBoard[gCurrI][gCurrJ].isMine) {
         gGame.livesCount--;
         innerCell.innerText = MINE;
+        elCell.style.backgroundColor = '#e24d4d';
         var elLives = document.querySelector('.control-panel .lives span');
         elLives.innerHTML = gGame.livesCount;
 
@@ -97,6 +98,7 @@ function cellClicked(elCell) {
         }
     }
     else if (gBoard[gCurrI][gCurrJ].minesAroundCount === '') {
+        elCell.style.backgroundColor = '#f4a5604d';
         innerCell.innerText = gBoard[gCurrI][gCurrJ].minesAroundCount;
         expandShown(gBoard, gCurrI, gCurrJ);
     }
