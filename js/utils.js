@@ -23,24 +23,11 @@ function printMat(mat) {
     strHTML += '</tbody></table>';
     var elContainer = document.querySelector('.board-container');
     elContainer.innerHTML = strHTML;
-    // addRandomMines(mat, gLevel.mines)
-    // setMinesNegsCount(mat);
 }
-
-
-// location such as: {i: 2, j: 7}
-function renderCell(i, j, value) {
-    // Select the elCell and set the value
-    var elCell = document.querySelector([`data-i=${i} data-j=${j}`]);
-    elCell.innerHTML = value;
-}
-
 
 function getRandomIntIn(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-
 
 function countMinesAround(mat, rowIdx, colIdx) {
     var count = 0
@@ -55,7 +42,6 @@ function countMinesAround(mat, rowIdx, colIdx) {
         }
     }
     if (count === 0) return ''
-    
     return count
 }
 

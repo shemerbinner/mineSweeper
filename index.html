@@ -12,24 +12,21 @@
 <body onload="initGame()" oncontextmenu="return false;">
 
     <div class="control-panel">
-        <h1 style="order: 1">MineSweeper</h1>
+        <h1>MineSweeper</h1>
         
         <div class="addons">
-            <div class="lives" style="order: 3">Lives: <span></span> </div>
-            <div class="hint" style="order: 3" onclick="gGameHintTrue()">Hints: <span></span> </div>
-            <div class="safe-click" style="order: 3;" onclick="safeClick()">Safe Click: <span></span> </div>
+            <div class="lives">Lives: <span></span> </div>
+            <div class="hint" onclick="gGameHintTrue()">Hints: <span></span> </div>
+            <div class="safe-click" onclick="safeClick()">Safe Click: <span></span> </div>
         </div>
         
         
-        <button class="restart" style="order: 3;" onclick="initGame()"></button>
+        <button class="restart";" onclick="initGame()"></button>
         
-        <div class="buttons" style="order: 2;">
-            <button style="order: 1; align-self: flex-start;"
-            onclick="printMat(buildBoard(4, 2), '.board-container'), initGame()">Beginner</button>
-            <button style="order:1; align-self: flex-start;"
-            onclick="printMat(buildBoard(8, 12), '.board-container'), initGame()">Medium</button>
-            <button style="order: 1; align-self: flex-start;"
-            onclick="printMat(buildBoard(12, 30), '.board-container'), initGame()">Expert</button>
+        <div class="buttons">
+            <button onclick="printMat(buildBoard(4, 2), '.board-container'), initGame()">Beginner</button>
+            <button onclick="printMat(buildBoard(8, 12), '.board-container'), initGame()">Medium</button>
+            <button onclick="printMat(buildBoard(12, 30), '.board-container'), initGame()">Expert</button>
         </div>
         
         <h2 style="order: 4">Time: <span class="timer"></span></h2>

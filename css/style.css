@@ -1,30 +1,42 @@
-*{
-  font-family: 'Courier New', Courier, monospace;
+* {
+  font-family: "Courier New", Courier, monospace;
 }
-body{
+
+body {
+	height: 100%;
   text-align: center;
-  background-color: #b4bbc47c;
+  background: linear-gradient(to top, #647577f5 5%, #b4c1c34b 100%);
+}
+
+.board-container {
+  margin: 0px auto;
+  width: 500px;
+  height: 490px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .board {
-  width: 300px;
+  max-width: inherit;
   border: 1px solid black;
   text-align: center;
   table-layout: fixed;
   margin: auto;
-  overflow: hidden
 }
 
-tr, .cell {
+.cell {
+  font-size: 0.9em;
   text-align: center;
   border: 1px solid black;
-  padding: 30px;
+  padding: 8px;
   width: 20px;
   height: 10px;
-  overflow: hidden
+  overflow: hidden;
 }
 
-.cell:hover{
+.cell:hover {
   background-color: #f4a5604d;
 }
 
@@ -35,18 +47,18 @@ tr, .cell {
   margin: auto;
 }
 
-
 .control-panel {
   height: 300px;
   width: 750px;
-  margin: auto;
+  margin: 0px auto;
   text-align: center;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 55px;
   margin: auto;
   padding: 8px;
+  text-decoration: underline;
 }
 
 h2 {
@@ -54,33 +66,29 @@ h2 {
   margin-top: 70px;
 }
 
-
 .restart {
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb391 5%, #6dbecc8c 100%);
+  background-color: #599bb3;
+  border-radius: 8px;
+  border-width: 0;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 25px;
+  padding: 13px 32px;
   margin-top: 30px;
-  margin-right: 20px;
+  margin-right: 60px;
 }
 .restart:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
 }
 .restart:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
-
 
 .addons {
   float: left;
@@ -88,68 +96,66 @@ h2 {
   height: 70px;
   width: 270px;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .addons .lives {
-  font-size: 25px;
+  font-size: 29px;
   display: inline;
   margin-right: 50px;
-  text-shadow: 2px 2px 5px red;
+  text-shadow: 2px 2px 5px rgb(255, 0, 0);
 }
 
-
 .addons .hint {
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 13px 32px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
   margin-top: 15px;
 }
 
 .addons .hint:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
 }
 
 .addons .hint:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 
- 
 .addons .safe-click {
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
-  margin-top: 20px;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 13px 32px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+  margin-top: 18px;
 }
 .safe-click:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
 }
 .safe-click:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 
 .control-panel .buttons {
@@ -158,33 +164,31 @@ h2 {
   width: 220px;
   text-align: end;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .buttons button {
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
-  margin-top: 10px;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 8px;
+  border-width: 0;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 13px 32px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+  margin-top: 12px;
 }
-.myButton:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
+.buttons button:hover {
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
 }
-.myButton:active {
-	position:relative;
-	top:1px;
+.buttons button:active {
+  position: relative;
+  top: 1px;
 }
-
-
-

@@ -26,23 +26,24 @@ function gGameHintTrue() {
 
 
 function hideCells() {
-
     for (var i = gCurrI - 1; i <= gCurrI + 1; i++) {
         if (i < 0 || i > gBoard.length - 1) continue
         for (var j = gCurrJ - 1; j <= gCurrJ + 1; j++) {
             if (j < 0 || j > gBoard[0].length - 1) continue
             if (i === gCurrI && j === gCurrJ) continue
             var cell = gBoard[i][j];
-
-            if (cell.isMine) continue
-            if (cell.isRevealed) continue
-
-            cell.isShown = false;
+            if (cell.isMine || cell.isMarked || cell.isRevealed) continue
+            if (cell.isShown) cell.isShown = false;
+            else continue
+            
             var cellAround = document.querySelector([`[data-i="${i}"][data-j="${j}"]`])
             var innerCell = cellAround.querySelector('.inner-cell')
             innerCell.innerText = '';
+            cellAround.style.backgroundColor = '#dadde2';
         }
     }
+    var elCell = document.querySelector([`[data-i="${gCurrI}"][data-j="${gCurrJ}"]`])
+    elCell.style.backgroundColor = '#dadde2';
     gGame.hint = false;
 }
 
@@ -65,10 +66,10 @@ function safeClick() {
     var locJ = randSafeCell.location.j;
 
     var elCell = document.querySelector(`.board-container [data-i="${locI}"][data-j="${locJ}"] `);
-    elCell.style.backgroundColor = 'red';
+    elCell.style.backgroundColor = '#ff000085';
 
     setTimeout(() => {
-        elCell.style.backgroundColor = 'white';
+        elCell.style.backgroundColor = '';
     }, 3000)
 
     gSafeClickCount--
