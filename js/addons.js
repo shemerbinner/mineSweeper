@@ -39,11 +39,11 @@ function hideCells() {
             var cellAround = document.querySelector([`[data-i="${i}"][data-j="${j}"]`])
             var innerCell = cellAround.querySelector('.inner-cell')
             innerCell.innerText = '';
-            cellAround.style.backgroundColor = '#dadde2';
+            cellAround.style.backgroundColor = '';
         }
     }
     var elCell = document.querySelector([`[data-i="${gCurrI}"][data-j="${gCurrJ}"]`])
-    elCell.style.backgroundColor = '#dadde2';
+    elCell.style.backgroundColor = '';
     gGame.hint = false;
 }
 
@@ -66,7 +66,7 @@ function safeClick() {
     var locJ = randSafeCell.location.j;
 
     var elCell = document.querySelector(`.board-container [data-i="${locI}"][data-j="${locJ}"] `);
-    elCell.style.backgroundColor = '#ff000085';
+    elCell.style.backgroundColor = '#88E397';
 
     setTimeout(() => {
         elCell.style.backgroundColor = '';
