@@ -124,7 +124,7 @@ function cellClicked(elCell) {
         if (gGame.hint) setTimeout(() => {
             innerCell.innerText = ''
             gGame.hint = false
-            elCell.style.backgroundColor = '#dadde2';
+            elCell.style.backgroundColor = '';
         }, 1000);
     }
     checkGameOver(elCell);
